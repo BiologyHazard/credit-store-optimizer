@@ -1,23 +1,33 @@
 # 注：代码为了可读性牺牲了性能，实际运行起来非常慢。
+# 代码仓库 https://github.com/BiologyHazard/credit-store-optimizer 中有为性能优化后的代码。
 
 import math
 from itertools import product
 from statistics import mean
+from typing import Sequence
 
 from 信用交易所模型 import 信用交易所
 from 统计结果 import 信用交易所统计字典
 
 
-def 求解单个商店最优购买策略(商店: 信用交易所, 当前信用: int, KnC_: list[float]) -> tuple[float, tuple[bool, ...]]:
-    """在 2**10 种购买方案中选一种不超支的，使得 当天购买的物品总价值 + KnC(能够继承的信用) 最大"""
+def 计算总价格(商店: 信用交易所, 购买指标向量: Sequence[bool]) -> int:
+    return sum(商品.现价 for i, 商品 in enumerate(商店.商品列表) if 购买指标向量[i])
+
+
+def 计算总价值(商店: 信用交易所, 购买指标向量: Sequence[bool]) -> float:
+    return sum(商品.价值 for i, 商品 in enumerate(商店.商品列表) if 购买指标向量[i])
+
+
+def 求解单个商店最优购买策略(商店: 信用交易所, 当前信用: int, KnC·: list[float]) -> tuple[float, tuple[bool, ...]]:
+    """在 2**10 种购买方案中选一种不超支的，使得 当天购买的物品总价值 + KnC·[能够继承的信用] 最大"""
     目标函数最大值: float = -math.inf
     for 购买指标向量 in product((False, True), repeat=len(商店.商品列表)):  # 枚举 2 ** 10 种购买方案
-        总价格: float = sum(商品.现价 for i, 商品 in enumerate(商店.商品列表) if 购买指标向量[i])
-        总价值: float = sum(商品.价值 for i, 商品 in enumerate(商店.商品列表) if 购买指标向量[i])
+        总价格: int = 计算总价格(商店, 购买指标向量)
+        总价值: float = 计算总价值(商店, 购买指标向量)
         剩余信用: float = 当前信用 - 总价格
         能够继承的信用: float = min(剩余信用, 300)
         if 总价格 <= 当前信用:
-            目标函数: float = 总价值 + KnC_[能够继承的信用]
+            目标函数: float = 总价值 + KnC·[能够继承的信用]
             if 目标函数 > 目标函数最大值:
                 目标函数最大值 = 目标函数
                 最优策略购买指标向量 = 购买指标向量
@@ -45,4 +55,4 @@ if __name__ == '__main__':
         K·C·.append(KnC·)
 
     for n, KnC· in enumerate(K·C·):
-        print(f'K_{n}: {KnC·}')
+        print(f'K_{n}_{每日获取信用C}_·: {KnC·}')
