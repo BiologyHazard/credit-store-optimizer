@@ -5,7 +5,7 @@ import multiprocessing
 import numpy as np
 
 from 中间结果.价格价值矩阵 import 价值矩阵, 价格矩阵
-from 统计结果 import 信用交易所统计字典
+
 
 logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(module)s:%(funcName)s:%(lineno)d | %(message)s',
@@ -65,7 +65,6 @@ def 多进程迭代计算K···(考虑的天数N, 每日获得的信用列表):
 
 
 if __name__ == '__main__':
-    参与计算的信用交易所 = list(信用交易所统计字典.values())
     考虑的天数N = 11
     每日获得的信用列表 = list(range(0, 1001, 5))
 

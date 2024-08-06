@@ -7,7 +7,7 @@ from itertools import product
 from statistics import mean
 
 from 信用交易所模型 import 信用交易所
-from 统计结果 import 信用交易所统计字典
+from 统计结果 import 信用交易所统计结果
 
 
 def 计算总价格(商店: 信用交易所, 购买指标向量: Sequence[bool]) -> int:
@@ -36,7 +36,6 @@ def 求解单个商店最优购买策略(商店: 信用交易所, 当前信用: 
 
 
 if __name__ == '__main__':
-    参与计算的信用交易所 = list(信用交易所统计字典.values())
     每日获得的信用C = 813
     考虑的天数N = 10
 
@@ -48,7 +47,7 @@ if __name__ == '__main__':
         KnC·: list[float] = [0 for _ in range(301)]
         for 继承的信用c in range(301):
             KnCc的采样: list[float] = []
-            for 商店 in 参与计算的信用交易所:
+            for 商店 in 信用交易所统计结果:
                 目标函数最大值, _ = 求解单个商店最优购买策略(商店, 继承的信用c + 每日获得的信用C, K_n减1_C_·)
                 KnCc的采样.append(目标函数最大值)
             KnC·[继承的信用c] = mean(KnCc的采样)  # 以均值作为期望的估计

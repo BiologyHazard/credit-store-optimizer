@@ -3,13 +3,13 @@ from statistics import mean
 
 from scipy.interpolate import interp1d
 
-from 统计结果 import 信用交易所统计字典
+from 统计结果 import 信用交易所统计结果
 
 
 if __name__ == '__main__':
     每日获得的信用枚举空间 = range(0, 1501, 1)
     信用能购买的商品碎片的价值列表 = []
-    for 商店 in 信用交易所统计字典.values():
+    for 商店 in 信用交易所统计结果:
         已花费信用 = 0
         已购买物品的价值 = 0
         x: list[float] = [0]

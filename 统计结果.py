@@ -1,6 +1,6 @@
 import csv
 import json
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 from 信用交易所模型 import 信用交易所, 信用交易所商品
@@ -15,7 +15,7 @@ def 初步筛选函数(账号序号):
 
 
 原始数据路径 = Path("数据/统计数据.csv")
-信用交易所统计字典: dict[tuple[int, date], 信用交易所] = {}
+信用交易所统计结果: list[信用交易所] = []
 with open(原始数据路径, 'r', encoding='utf-8', newline='') as csvfile:
     csv_reader = csv.DictReader(csvfile, delimiter='\t', quotechar='|')
     try:
@@ -35,6 +35,6 @@ with open(原始数据路径, 'r', encoding='utf-8', newline='') as csvfile:
                 折扣 = int(row['折扣'])
                 是否购买 = row['是否购买'] == 'TRUE'
                 商品列表.append(信用交易所商品(物品名称=物品名称, 折扣=折扣, 已购买=是否购买))
-            信用交易所统计字典[账号序号, 日期] = 信用交易所(剩余信用=剩余信用, 商品列表=商品列表)
+            信用交易所统计结果.append(信用交易所(剩余信用=剩余信用, 商品列表=商品列表))
     except StopIteration:
         pass
