@@ -52,7 +52,7 @@ def 多进程迭代计算K···(考虑的天数N, 每日获得的信用列表):
 
     for n in range(1, 考虑的天数N):
         logger.info(f'开始计算 K_{n}_·_·')
-        K_n减1_·_· = K···[n-1]
+        K_n减1_·_· = K···[n - 1]
         with multiprocessing.Pool() as pool:
             目标函数最大值矩阵列表 = pool.starmap(
                 进程,
