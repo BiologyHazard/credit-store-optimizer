@@ -1,3 +1,9 @@
+# Credit Store Optimizer
+
+信用商店最优购买策略、信用的价值
+
+---
+
 - 购买指标向量：一个 10-元组，每个元素都是 `bool` 类型，表示是否购买了对应位置的商品。例如，`(True, False, True, False, False, False, False, False, False, False)` 表示购买了第 1 和第 3 个物品。
 
 ## $K_C^n(c)$ 相关的变量命名规则
