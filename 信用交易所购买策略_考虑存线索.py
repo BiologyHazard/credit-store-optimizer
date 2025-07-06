@@ -2,11 +2,10 @@ import math
 import multiprocessing
 import random
 from abc import ABC, abstractmethod
-from typing import Sequence
 
 import numpy as np
 
-from 信用交易所模型 import 信用交易所, 信用交易所商品
+from 信用交易所模型 import 信用交易所商品
 from 统计结果 import 信用交易所统计结果
 
 
@@ -21,8 +20,8 @@ class 最优购买策略的近似策略(信用交易所购买策略):
                  每日获得的信用: int,
                  每日获得的线索折算信用: int):
         from 中间结果.信用能购买的商品碎片的价值 import 信用能购买的商品碎片的价值
-        x, y = np.ogrid[:301, :221]
-        index_array = 每日获得的信用 + 每日获得的线索折算信用 - 260 + x + y
+        x, y = np.ogrid[:301, :241]
+        index_array = 每日获得的信用 + 每日获得的线索折算信用 - 270 + x + y
         self.L_N减1_D_·_· = 信用能购买的商品碎片的价值(index_array)
 
     def 快速求解(self, 商店序号: int, 当前信用: int, 当前线索折算信用: int) -> tuple[int, float, int, int]:
@@ -101,8 +100,8 @@ def 模拟一轮购买(
     已购买总价值 = 0
     for 商店序号 in 顺序:
         # 先传递溢出的线索
-        if 当前线索折算信用 > 220:
-            传递的线索数量 = math.ceil((当前线索折算信用 - 220) / 20)
+        if 当前线索折算信用 > 240:
+            传递的线索数量 = math.ceil((当前线索折算信用 - 240) / 20)
             当前信用 += 传递的线索数量 * 20
             当前线索折算信用 -= 传递的线索数量 * 20
         # 快速求解
