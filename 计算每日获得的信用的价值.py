@@ -3,12 +3,12 @@ import math
 import multiprocessing
 import random
 
-from 中间结果.K··· import K_N减1_·_·
+from 中间结果.K_x_x_x import K_N减1_x_x
 from 中间结果.价格价值矩阵 import 价值矩阵, 价格矩阵
 
 
 def 计算每日获得的信用的价值(每日获得的信用: int, 顺序: list[int]) -> float:
-    K_N减1_C_· = [K_N减1_·_·(每日获得的信用, c) for c in range(301)]
+    K_N减1_C_· = [K_N减1_x_x(每日获得的信用, c) for c in range(301)]
     当前信用 = 每日获得的信用
     已购买总价值 = 0
     for 商店序号 in 顺序:

@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Container, Sequence
 from itertools import product
 
-from 中间结果.K··· import N
+from 中间结果.K_x_x_x import N
 from 信用交易所模型 import 信用交易所, 信用交易所商品
 from 统计结果 import 信用交易所统计结果
 
@@ -96,12 +96,12 @@ class 从左到右购买_设定黑白名单策略(信用交易所购买策略):
         购买指标向量 = [False for _ in 商店.商品列表]
         # 先购买白名单中的商品
         for 商品序号, 商品 in 计算未购买的商品列表(商店):
-            if 商品.物品名称 in self.白名单 and 商品.现价 <= 当前信用 and not (self.信用小于等于300时停止购买 and 当前信用 <= 300):
+            if 商品.商品名称 in self.白名单 and 商品.现价 <= 当前信用 and not (self.信用小于等于300时停止购买 and 当前信用 <= 300):
                 购买指标向量[商品序号] = True
                 当前信用 -= 商品.现价
         # 再购买不在黑名单中的商品
         for 商品序号, 商品 in 计算未购买的商品列表(商店, 购买指标向量):
-            if 商品.物品名称 in self.黑名单:
+            if 商品.商品名称 in self.黑名单:
                 continue
             if 商品.现价 <= 当前信用 and not (self.信用小于等于300时停止购买 and 当前信用 <= 300):
                 购买指标向量[商品序号] = True
@@ -141,11 +141,11 @@ class 考虑天数为N时的信用交易所最优购买策略(信用交易所购
                  K_N减1_C_·: Sequence[float] | None = None,
                  N: int | None = None):
         if K_N减1_C_· is None:
-            from 中间结果.K··· import K···
-            from 中间结果.K··· import N as N
+            from 中间结果.K_x_x_x import K_x_x_x
+            from 中间结果.K_x_x_x import N as N
             if N is None:
                 N = N
-            K_N减1_C_· = [K···(N - 1, 每日获得的信用, c) for c in range(301)]
+            K_N减1_C_· = [K_x_x_x(N - 1, 每日获得的信用, c) for c in range(301)]
         self.K_N减1_C_·: Sequence[float] = K_N减1_C_·
 
     def 求解(self, 商店: 信用交易所) -> tuple[bool, ...]:
@@ -204,11 +204,11 @@ class 按性价比从高到低购买_并设定性价比阈值策略(信用交易
         if 阈值 is not None:
             self.阈值 = 阈值
         else:
-            from 中间结果.K··· import K_N减1_·_·
+            from 中间结果.K_x_x_x import K_N减1_x_x
             # from 中间结果.信用能购买的商品碎片的价值 import 信用能购买的商品碎片的价值
             if 每日获得的信用 is None:
                 raise TypeError('必须提供阈值或者每日获得的信用')
-            self.阈值 = (K_N减1_·_·(每日获得的信用, 300) - K_N减1_·_·(每日获得的信用, 0)) / 300
+            self.阈值 = (K_N减1_x_x(每日获得的信用, 300) - K_N减1_x_x(每日获得的信用, 0)) / 300
             # self.阈值 = 信用能购买的商品碎片的价值(每日获得的信用 + 1) - 信用能购买的商品碎片的价值(每日获得的信用)
 
     @staticmethod

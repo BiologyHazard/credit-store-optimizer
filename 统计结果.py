@@ -31,10 +31,11 @@ with open(原始数据路径, 'r', encoding='utf-8', newline='') as csvfile:
             for i, row in enumerate(接下来10行):
                 序号 = int(row['序号'])
                 assert 序号 == i
-                物品名称 = row['名称']
+                商品名称 = row['名称']
                 折扣 = int(row['折扣'])
                 是否购买 = row['是否购买'] == 'TRUE'
-                商品列表.append(信用交易所商品(物品名称=物品名称, 折扣=折扣, 已购买=是否购买))
+                assert int(row["剩余信用"]) == 剩余信用
+                商品列表.append(信用交易所商品(商品名称=商品名称, 折扣=折扣, 已购买=是否购买))
             信用交易所统计结果.append(信用交易所(剩余信用=剩余信用, 商品列表=商品列表))
     except StopIteration:
         pass
