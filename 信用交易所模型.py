@@ -10,12 +10,14 @@ class 信用交易所商品(NamedTuple):
     已购买: bool
 
     @property
-    def 现价(self) -> int:
-        return math.floor(信用交易所商品价格字典[self.商品名称] * (1 - self.折扣 / 100))
-
-    @property
     def 原价(self) -> int:
         return 信用交易所商品价格字典[self.商品名称]
+
+    @property
+    def 现价(self) -> int:
+        现价 = self.原价 * (1 - self.折扣 / 100)
+        assert math.isclose(现价, round(现价)), f'商品 {self.商品名称} 的现价 {现价} 不是整数'
+        return round(现价)
 
     @property
     def 价值(self) -> float:
