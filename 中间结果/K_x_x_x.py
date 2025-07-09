@@ -14,7 +14,7 @@ N: int = len(obj)
 def get_K_n_x_c(n, c) -> interp1d:
     x = [int(C) for C in obj[n]]
     y = [obj[n][str(C)][c] for C in obj[n]]
-    return interp1d(x, y, kind='cubic')
+    return interp1d(x, y, kind='linear')
 
 
 def K_x_x_x(n: int, C: float, c: int) -> float:

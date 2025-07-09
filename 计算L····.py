@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 @lru_cache(maxsize=None)
 def _get_LnDc·(LnDc·) -> interp1d:
-    return interp1d(range(12), LnDc·, kind='cubic')
+    return interp1d(range(12), LnDc·, kind='linear')
 
 
 def LnDc·(LnDc·, e) -> float:

@@ -68,8 +68,11 @@ def 多进程迭代计算K_x_x_x(考虑的天数N, 每日获得的信用列表):
 
 
 if __name__ == '__main__':
-    考虑的天数N = 11
-    每日获得的信用列表 = list(range(0, 1001, 4))
+    考虑的天数N = 17
+    每日获得的信用列表 = list(range(2, 1001, 4))
+
+    with open('中间结果/K_x_x_x.json', 'r', encoding="utf-8") as f:
+        old_K_x_x_x = json.load(f)
 
     K_x_x_x = 多进程迭代计算K_x_x_x(考虑的天数N, 每日获得的信用列表)
 
@@ -77,5 +80,9 @@ if __name__ == '__main__':
     for n in range(考虑的天数N):
         for i, 每日获得的信用 in enumerate(每日获得的信用列表):
             obj[n][str(每日获得的信用)] = K_x_x_x[n, i, :].tolist()  # json 的 key 只能是字符串
-    with open('中间结果/K_x_x_x.json', 'w') as f:
+        for 每日获得的信用, K_n_C_x in old_K_x_x_x[n].items():
+            if int(每日获得的信用) not in obj[n]:
+                obj[n][每日获得的信用] = K_n_C_x
+        obj[n] = {k: v for k, v in sorted(obj[n].items(), key=lambda item: int(item[0]))}
+    with open('中间结果/K_x_x_x.json', 'w', encoding="utf-8") as f:
         json.dump(obj, f, separators=(',', ':'))

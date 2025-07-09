@@ -35,10 +35,10 @@ def 计算每日获得的信用的价值(每日获得的信用: int, 顺序: lis
 if __name__ == '__main__':
     random.seed(0)
     商店数量 = len(价格矩阵)
-    顺序 = list(range(商店数量)) * 5
+    顺序 = list(range(商店数量)) * 10
     random.shuffle(顺序)
 
-    每日获得的信用列表 = range(0, 1001, 5)
+    每日获得的信用列表 = range(0, 1001, 4)
     with multiprocessing.Pool() as pool:
         每日获得的信用的价值列表 = pool.starmap(
             计算每日获得的信用的价值,

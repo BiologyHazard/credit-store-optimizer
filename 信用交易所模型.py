@@ -29,7 +29,7 @@ class 信用交易所商品(NamedTuple):
 
     def copy(self, **kwargs) -> Self:
         return self.__class__(**({
-            '物品名称': self.商品名称,
+            '商品名称': self.商品名称,
             '折扣': self.折扣,
             '已购买': self.已购买,
         } | kwargs))
